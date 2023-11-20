@@ -3,9 +3,8 @@ package com.hamtz.sistemkeamanan
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
+import android.widget.Toast
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var webView: WebView
@@ -14,18 +13,26 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         webView = findViewById(R.id.webview)
-        webView.webViewClient = WebViewClient()
+        webView.webViewClient = object : WebViewClient() {
+            override fun onReceivedError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError?
+            ) {
+                // Handle the error here, for example, show an error message or load a default page.
+                // You can customize this based on your application's requirements.
+                Toast.makeText(this@HomeActivity, "Error loading the page", Toast.LENGTH_SHORT).show()
+                // You can load a default page or do any other action here.
+                // webView.loadUrl("file:///android_asset/error_page.html")
+            }
+        }
 
-        // this will load the url of the website
-//        webView.loadUrl("https://mamanialaundry.my.id")
+        // Load the URL
         webView.loadUrl("https://myshared.my.id")
-        // this will enable the javascript settings, it can also allow xss vulnerabilities
         webView.settings.javaScriptEnabled = true
-
         webView.setWebChromeClient(WebChromeClient())
-
-        // if you want to enable zoom feature
         webView.settings.setSupportZoom(true)
+
     }
 
     override fun onBackPressed() {

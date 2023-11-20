@@ -17,6 +17,7 @@ class ListActivity : AppCompatActivity() {
         webView.webViewClient = WebViewClient()
 
         // this will load the url of the website
+//        webView.loadUrl("https://mamanialaundry.my.id/list-deteksi")
         webView.loadUrl("https://myshared.my.id/list-deteksi")
         // this will enable the javascript settings, it can also allow xss vulnerabilities
         webView.settings.javaScriptEnabled = true
