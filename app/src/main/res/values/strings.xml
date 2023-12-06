@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Sistem Keamanan</string>
+    <string name="deskripsi">Apliaksi pemantau berbasis OrangePi untuk membantu keamanan kandang</string>
 </resources>

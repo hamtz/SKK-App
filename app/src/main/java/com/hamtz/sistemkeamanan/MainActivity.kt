@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     private lateinit var btHome: Button
     private lateinit var btList: Button
+    private lateinit var btAbout: Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         btHome = findViewById(R.id.btnHome)
         btList = findViewById(R.id.btnList)
+        btAbout = findViewById(R.id.btnAbout)
 
         btHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
@@ -28,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         }
         btList.setOnClickListener {
             val intent = Intent(this, ListActivity::class.java)
+            startActivity(intent)
+        }
+        btAbout.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
             startActivity(intent)
         }
     }
